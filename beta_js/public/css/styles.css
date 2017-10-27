@@ -1,0 +1,339 @@
+.nav {
+    background-color: black;
+    color: white;
+    padding: 40px 15%;
+    line-height: 45px;
+}
+
+.nav .name {
+    font-weight: bold;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    color: gray;
+}
+
+
+.nav ul {
+    margin: 0;
+    padding: 0 0 0 60px;
+}
+
+
+.nav li {
+    display: inline;
+    margin-right: 60px;
+    font-size: 20px;
+    position: relative;
+}
+
+
+.nav img {
+    transform: translate( -60px, calc( -50% - 4px ) );
+    position: absolute;
+    top: 50%;
+}
+
+
+html, body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fcfaf2;
+}
+
+
+.footer {
+    background-color: black;
+    color: white;
+    padding: 30px 15% 200px;
+}
+
+.footer a {
+    color: white;
+    font-weight: 600;
+}
+
+.footer a:hover {
+    color: orange;
+}.jq-ry-container>.jq-ry-group-wrapper>.jq-ry-group.jq-ry-rated-group
+
+.content {
+  min-height: 714px;  
+}
+
+.listings {
+    padding: 0;
+    max-width: 750px;
+    margin: 10px auto 0;
+}
+
+.listings li {
+    background: white;
+	  display: block;
+    width: 100%;
+    vertical-align: middle;
+    padding: 0.4vw;
+    margin: 0 0 10px;
+    height: 200px;
+    border: 1px solid gray;
+    outline: 2px solid transparent;
+    transition: outline 0.2s;
+}
+
+.listings li:hover {
+    border: 1px solid gray;
+  outline: 2px solid gray;
+  transition: outline 0.0s;
+}
+
+.listings a {
+  display: block;
+  height: 100%;
+  color: black;
+  text-decoration: none;
+}
+
+.listings li img {
+    height: 100%;
+}
+
+.filter-bar {
+  background: #fec;
+  padding: 10px 4%;
+}
+
+.filters {
+  max-width: 900px;
+  margin: auto;
+  font-size: 20px;
+}
+
+.filter {
+  margin: 10px;
+  display: inline-block;
+  width: 44%;
+  text-align: center;
+}
+
+.filter input {
+  text-align: center;
+}
+
+.filter-name {
+	display: block;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.price-range input {
+  width: 70px;
+  vertical-align: text-top; /* align the price input boxes with the top of the $ signs */
+}
+
+.no-listings {
+  font-size: 20px;
+  text-align: center;
+}
+
+.room-element {
+  display: inline-block;
+  margin: 0 7px;
+}
+
+.datepicker {
+  position: relative;
+  margin-right: auto;
+}
+
+.ui-datepicker {
+  margin-right: auto;
+}
+
+.details {
+  text-align: left;
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.details > * {
+  max-width: 280px;
+  margin: 0 auto 13px;
+}
+
+.details p {
+  text-align: left;
+}
+
+/* Calendar styles
+   !important makes a rule apply even some other selector is of higher priority.
+   It is fequently necessary for overriding plugin defaults
+*/
+.booked-by-self {
+    background-color: #d7fc41;
+    color: white;
+    border: 1px solid gray;
+    font-weight: bold;
+    opacity: 1 !important;
+}
+
+.booked-by-self a {
+  background: transparent !important;
+}
+
+.ui-state-active {
+  border: 1px solid #c5c5c5 !important;
+  background: #f6f6f6 !important;
+  color: black !important;
+}
+
+.ui-state-disabled span {
+  background: red !important;
+  color: white !important;
+}
+
+form:not(.no-style) label, form:not(.no-style) input, form:not(.no-style) textarea {
+  display: block;
+  width: 100%;
+}
+
+form:not(.no-style) input, form:not(.no-style) textarea {
+  margin-bottom: 5px;
+}
+
+.hide {
+  display: none !important;
+}
+
+.header {
+    background-image: url('https://cdn.gomix.com/b07a12d5-7910-4ca6-9f1f-ae0aa2d99417%2Fcat-in-box.jpg');
+    background-size: cover;
+    background-position: 50% 30%;
+    padding: 150px 15%;
+    color: white;
+}
+
+.header h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 80px;
+}
+
+.header p {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.header a {
+    background-color: orange;
+    color: white;
+    padding: 20px 30px;
+    text-decoration: none;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.header a:hover {
+    background-color: black;
+}
+
+.features {
+    padding: 60px 15% 0px;
+    background-color: #fff9f1;
+}
+
+.feature {
+    border: 2px solid #7a7a7a;
+    width: 300px;
+    display: inline-block;
+    padding: 20px 40px;
+    margin-right: 50px;
+    margin-bottom: 60px;
+    vertical-align: top;
+    background-color: white;
+}
+
+.feature h2 {
+    font-size: 30px;
+}
+
+.feature p {
+    font-size: 20px;
+}
+
+.rating-stars, #rating-stars {
+    padding-left: 0;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: -2px;
+}
+
+.box-content {
+  max-width: 800px;
+  margin: 10px auto;
+}
+
+.box-image {
+  width: 49%;
+  max-height: 300px;
+  object-fit: cover;
+  border: 1px solid gray;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.thanks {
+  border-radius: 5px;
+  background-color: #ffcb52;
+  padding: 5px 10px 3px;
+  animation: fadein 1s ease-out;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.signup-content {
+  max-width: 500px;
+  margin: 10px auto;
+}
+
+.details a {
+  color: blue;
+}
+
+.signup-content input[type=submit] {
+  margin-top: 10px;
+}
+
+h4 {
+  margin-bottom: 5px;
+  margin: 0;
+}
+
+.review {
+  background: white;
+  padding: 16px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.review p:last-child {
+  margin-bottom: 0;
+}
+
+.jq-ry-rated-group,
+.jq-ry-normal-group {
+  z-index: 0 !important;
+}

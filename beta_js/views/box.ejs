@@ -1,0 +1,83 @@
+<!-- htmlhint spec-char-escape:false -->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <%- include( 'partials/head' ); %>
+
+</head>
+
+<body>
+
+	<%- include( 'partials/nav' ); %>
+
+	<div class="content box-content">
+
+      <%- include( 'partials/box-image', { listing: listing } ) %>
+
+      <div class="details">
+
+        <%- include( 'partials/box-description', { listing: listing } ) %>
+
+        <!--
+        The following lines are a template using an if/else block
+        It first checks to see if "booking_message" has been defined
+        If so it prints whatever is inside the variable "booking_message"
+        Else it prints the booking form
+        -->
+
+        <% if ( booking_message ) { %>
+
+          <p class="thanks">
+            <%- booking_message %>
+          </p>
+
+        <% } else { %>
+
+          <!--
+          Forms can be found in the 'views/forms' directory.
+          They are the same thing as partials, but we name them differently to
+          Indicate that they contain the <form> HTML element
+
+          <forms> elements can be used by the user to submit information to our application server
+          -->
+
+          <%- include( 'forms/booking' ) %>
+
+        <% } %>
+
+        <h3>
+          Reviews
+        </h3>
+
+        <!--
+        It is best practice to create reusable components.
+        Here we have the view partial "message" which print the exact same message as the one used aboce in "booking_message"
+        As an exercise, modify the code above for "booking_message" to use the same partial as "review_message" uses here
+        You will need to modify the if/else block
+        -->
+
+        <%- include( 'partials/message', { message: review_message } ); %>
+
+        <% if ( ! reviewed ) { %>
+
+          <p>
+            <a href="/review/<%= listing.id %>" class="button">Add a Review</a>
+          </p>
+
+        <% } %>
+
+        <%- include( 'partials/reviews', { listing : listing } ) %>
+
+      </div>
+
+	</div>
+
+  <%- include( 'partials/footer' ); %>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!-- htmlhint spec-char-escape:false -->
+<!--
+This is the 'review' view. It presents the user with a form for submitting reviews of a listing
+-->
+
+<!DOCTYPE html>
+
+<html>
+  
+<head>
+
+  <%- include( 'partials/head' ); %>
+  
+</head>
+
+<body>
+  
+	<%- include( 'partials/nav' ); %>
+	
+	<div class="content box-content">
+	  
+      <%- include( 'partials/box-image', { listing: listing } ) %>
+    
+      <div class="details">
+        
+        <%- include( 'partials/box-description', { listing: listing } ) %>
+     
+        <%- include( 'forms/review' ) %>
+        
+      </div>
+		
+	</div>
+	
+  <%- include( 'partials/footer' ); %>
+	
+</body>
+
+</html>

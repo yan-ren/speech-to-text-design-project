@@ -1,0 +1,65 @@
+<!-- htmlhint spec-char-escape:false -->
+
+<!--
+This is the booking form which gets inserted into the 'box' view
+
+There is a script at the end of it used to create an interactive datepicker on the form
+-->
+
+<h3>
+  Review:
+</h3>
+
+<!--
+This form is very similar to the booking form.
+It submits to the same route it is on, but using a POST request
+app.post( '/review/:id' )
+Instead of a datepicker plugin, we use the Rate Yo plugin to give us a star-rating meter.
+-->
+
+<form class="full-width" method="post">
+
+  <!--
+  The following div is where we will deploy the plugin.
+  -->
+  
+  <div id="rating-stars"></div>
+  
+  <!--
+  This is a hidden input field that we use to hold the form value for the star rating.
+  There is javascript which updates the field's value whenever a star is clicked.
+  -->
+  
+  <input id="rating" name="rating" class="hide">
+  
+  <label for="comment">Comment</label>
+  <textarea id="comment" name="comment"></textarea>
+
+  <label for="name">Name</label>
+  <input id="name" name="name">
+
+  <div class="buttons">
+    <button type="submit">Submit</button>
+  </div>
+
+</form>
+
+<script>
+
+  // The following javascript enables the Rate Yo plugin.
+  // Plugins are pieces of code from the internet that can be added to your site
+  // They can contain all sorts of different features and functionality
+  // Complete with documentation and a variety of confiugration options
+
+  // The plugin works well with its default settings, but let's make one small adjustment together.
+  // We want the meter to round to the nearest full-star ratings, 1, 2, 3, 4, or 5.
+
+  // To do this, enable the { fullstar: true } option within the rateYo() call.
+  
+  $( '#rating-stars' ).rateYo()
+  
+  $( '#rating-stars' ).on( 'rateyo.set', function (e, data) {
+    $( '#rating' ).val( data.rating )
+  });
+
+</script>

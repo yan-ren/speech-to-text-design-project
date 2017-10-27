@@ -1,0 +1,84 @@
+<!-- htmlhint spec-char-escape:false -->
+
+<!--
+This is our 'home' view.
+-->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <!--
+  This EJS tag evaluates and prints the statement following it
+  The 'include' statement allows us to insert content from other views (called partials) into this view.
+
+  The 'head' partial, located at 'views/partials/head.ejs' has all of our JavaScript and CSS dependencies.
+  If you remove it, the site will look quite plain.
+  -->
+
+  <%- include( 'partials/head' ); %>
+
+</head>
+
+<body>
+
+  <!--
+  The 'nav' partial contains our site's navigation bar
+  -->
+
+	<%- include( 'partials/nav' ); %>
+
+	<div id="data" class="content">
+    <form method="post" enctype="multipart/form-data" action="/upload">
+      <input type="text" name="filename">
+      <input type="file" name="video">
+      <button id="uploadBtn">Begin Upload</button>
+    </form>
+    <div id="status">
+      Status Here
+    </div>
+
+    <script>
+        //   $( document ).ready(function() {
+        //     $("#uploadBtn").click(function(){
+        //       var formData = new FormData($('#data')[0]);
+        //       console.log(formData);
+        //   $.ajax({
+        //       url: "/upload",
+        //       type: 'POST',
+        //       data: formData,
+        //       xhr: function() {
+        //       	var xhr = new window.XMLHttpRequest();
+      	// 			  xhr.upload.addEventListener("progress", function(evt) {
+        //     			if (evt.lengthComputable) {
+        //     				var percentComplete = evt.loaded / evt.total;
+        //     				console.log(percentComplete);
+        //     				$('#status').html('<b> Uploading -> ' + (Math.round(percentComplete*100)) + '% </b>');
+        //             }
+        //  			  }, false);
+        //         return xhr;},
+        //       success: function (data) {
+        //           $("#status").html('UPLOADED!!');
+        //       },
+        //       cache: false,
+        //       contentType: false,
+        //       processData: false
+        //     });
+        //   return false;
+      	// });
+        // });
+    </script>
+
+	</div>
+
+  <!--
+  The 'footer' partial contains our site's footer. Don't forget to put your name in there :)
+  -->
+
+  <%- include( 'partials/footer' ); %>
+
+</body>
+
+</html>

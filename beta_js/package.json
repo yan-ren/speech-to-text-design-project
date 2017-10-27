@@ -1,0 +1,22 @@
+{
+  "name": "beta_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-session": "^1.3.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "insane": "^2.6.2",
+    "mongoose": "*",
+    "multer": "^1.3.0",
+    "require-glob": "^3.2.0",
+    "socket.io": "^2.0.3"
+  }
+}
