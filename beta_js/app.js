@@ -14,13 +14,15 @@ var requireGlob  = require('require-glob');
 // JsonDatabase sets up a JSON file as our database
 var jsonDb       = require('./lib/jsonDatabase');
 
+global.path = require('path');
+
 // Here we define the application instance
 global.app       = express();
 // And here we define the database connection
 global.database  = jsonDb( 'database.json' );
 
 // Now we listen for incoming requests
-app.listen( process.env.PORT || 8080);
+app.listen( process.env.PORT || 8000);
 // Support EJS templates http://ejs.co
 app.set( 'view engine', 'ejs' )
 // Make the /public folder available for download

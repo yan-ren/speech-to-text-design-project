@@ -1,38 +1,36 @@
-/* global app, database */
+/* global app, database, path */
 
-// This is the page for adding new boxes to the database.
-// It uses some plugins for reading and writing to the filesystem
-// It also uses a special plugin for accepting image uploads in the submitted form
+var formidable = require('formidable');
+var fs = require('fs');
 
-var fs       = require('fs');
-var multer   = require('multer');
-var upload   = multer({ dest: 'public/videos' });
-var insane   = require('insane')
+app.post('/upload', function(req, res){
 
-// app.get(  '/signup', function( request, response ) {
-//   response.render( 'signup' );
-// })
+  // create an incoming form object
+  var form = new formidable.IncomingForm();
 
-app.post( '/upload', upload.single('video'), function (request, response) {
+  // specify that we want to allow the user to upload multiple files in a single request
+  form.multiples = true;
 
-  // request.body will have the information the user posted (name, description, price, etc.)
-  var form = request.body;
+  // store all uploads in the /uploads directory
+  form.uploadDir = path.join(__dirname, '..', '/uploads');
 
-  // request.file has information about the image the user uploaded.
-  if ( request.file ) {
-    // var imageName = request.file.path + '-' + request.file.originalname;
-    // fs.rename(request.file.path, imageName);
-    // form.image   = imageName.substring('public'.length);   // save the image path in our database (and remove 'public' from the beginning of the path)
-  }
+  // every time a file has been uploaded successfully,
+  // rename it to it's orignal name
+  form.on('file', function(field, file) {
+    fs.rename(file.path, path.join(form.uploadDir, file.name));
+  });
 
-  // form.id       =  database.listings.length;               // assign this listing a unique id
-  // form.price    =  +form.price;                            // convert the price from a string to a number
-  // form.reviews  =  [];                                     // initially, no reviews for this listing
-  // form.description = insane( form.description, {           // We use the library 'insane' to sanitize the description and remove unwanted html tags
-  //   allowedTages: [ 'br' ]
-  // })
-  //
-  // database.listings.push( form );
+  // log any errors that occur
+  form.on('error', function(err) {
+    console.log('An error has occured: \n' + err);
+  });
 
-  response.redirect( '/');
+  // once all the files have been uploaded, send a response to the client
+  form.on('end', function() {
+    res.end('success');
+  });
+
+  // parse the incoming request containing the form data
+  form.parse(req, function(){});
+
 });

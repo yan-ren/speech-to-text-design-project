@@ -19,7 +19,20 @@ This is our 'home' view.
   -->
 
   <%- include( 'partials/head' ); %>
-
+  <style>
+   .container {
+       width: 500px;
+       margin: 0 auto;
+   }
+   .progress_outer {
+       border: 1px solid #000;
+   }
+   .progress {
+       width: 0%;
+       background: #DEDEDE;
+       height: 20px;
+   }
+   </style>
 </head>
 
 <body>
@@ -30,48 +43,58 @@ This is our 'home' view.
 
 	<%- include( 'partials/nav' ); %>
 
-	<div id="data" class="content">
-    <form method="post" enctype="multipart/form-data" action="/upload">
-      <input type="text" name="filename">
-      <input type="file" name="video">
-      <button id="uploadBtn">Begin Upload</button>
-    </form>
-    <div id="status">
-      Status Here
-    </div>
+  <div class='container'>
+          <p>
+              Select File:
+              <form enctype="multipart/form-data" method="post" action="/upload">
+                  <input type='file' id='_file' name='uploads[]' multiple="multiple">
+                  <input type='button' id='_submit' value='Upload!'>
+              </form>
+          </p>
+          <div class='progress_outer'>
+              <div id='_progress' class='progress'></div>
+          </div>
+  </div>
+  <script>
+          var _submit = document.getElementById('_submit'),
+        _file = document.getElementById('_file'),
+        _progress = document.getElementById('_progress');
 
-    <script>
-        //   $( document ).ready(function() {
-        //     $("#uploadBtn").click(function(){
-        //       var formData = new FormData($('#data')[0]);
-        //       console.log(formData);
-        //   $.ajax({
-        //       url: "/upload",
-        //       type: 'POST',
-        //       data: formData,
-        //       xhr: function() {
-        //       	var xhr = new window.XMLHttpRequest();
-      	// 			  xhr.upload.addEventListener("progress", function(evt) {
-        //     			if (evt.lengthComputable) {
-        //     				var percentComplete = evt.loaded / evt.total;
-        //     				console.log(percentComplete);
-        //     				$('#status').html('<b> Uploading -> ' + (Math.round(percentComplete*100)) + '% </b>');
-        //             }
-        //  			  }, false);
-        //         return xhr;},
-        //       success: function (data) {
-        //           $("#status").html('UPLOADED!!');
-        //       },
-        //       cache: false,
-        //       contentType: false,
-        //       processData: false
-        //     });
-        //   return false;
-      	// });
-        // });
+        var upload = function(){
+
+        if(_file.files.length === 0){
+            return;
+        }
+
+        var data = new FormData();
+        data.append('SelectedFile', _file.files[0]);
+
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function(){
+            if(request.readyState == 4){
+                try {
+                    var resp = JSON.parse(request.response);
+                    console.log(resp.status + ': ' + resp.data);
+                } catch (e){
+                    var resp = {
+                        status: 'error',
+                        data: 'Unknown error occurred: [' + request.responseText + ']'
+                    };
+                }
+
+            }
+        };
+
+        request.upload.addEventListener('progress', function(e){
+            _progress.style.width = Math.ceil(e.loaded/e.total) * 100 + '%';
+        }, false);
+
+        request.open('POST', '/upload');
+        request.send(data);
+        }
+
+        _submit.addEventListener('click', upload);
     </script>
-
-	</div>
 
   <!--
   The 'footer' partial contains our site's footer. Don't forget to put your name in there :)
