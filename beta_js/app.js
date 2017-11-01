@@ -1,9 +1,4 @@
-/* global app, database */
-
-// server.js
-// where your node app starts
-
-// First we require all the libraries we want to use
+/*global app, path*/
 
 // Express is a framework for accepting HTTP requests and generating HTML responses
 var express      = require('express');
@@ -12,14 +7,22 @@ var bodyParser   = require('body-parser');
 // RequireGlob imports all our controllers
 var requireGlob  = require('require-glob');
 // JsonDatabase sets up a JSON file as our database
-var jsonDb       = require('./lib/jsonDatabase');
+// var jsonDb       = require('./lib/jsonDatabase');
+// Mongodb
+var mongoose = require('mongoose');
 
 global.path = require('path');
-
 // Here we define the application instance
-global.app       = express();
+global.app  = express();
 // And here we define the database connection
-global.database  = jsonDb( 'database.json' );
+// global.database  = jsonDb( 'database.json' );
+
+// Connect to Mongoose
+mongoose.connect('mongodb://localhost:27017/test');
+var db = mongoose.connection;
+
+global.db_Upload = require('./models/upload')
+global.db_Srt = require('./models/srt')
 
 // Now we listen for incoming requests
 app.listen( process.env.PORT || 8000);

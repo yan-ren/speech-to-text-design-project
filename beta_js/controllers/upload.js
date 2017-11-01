@@ -17,7 +17,27 @@ app.post('/upload', function(req, res){
   // every time a file has been uploaded successfully,
   // rename it to it's orignal name
   form.on('file', function(field, file) {
+    var file_path = path.join(form.uploadDir, file.name);
+    var file_name = file.name;
+
+    //TODO: received file type/language from frontend
+    var file_type = 'video'
+    var file_language = 'English'
+
     fs.rename(file.path, path.join(form.uploadDir, file.name));
+    db_Upload.addUpload({
+        name: file_name,
+        url: file_path,
+        type: file_type,
+      }, function(err){
+        if(err){
+          throw err;
+        }
+        console.log("DB stores successfully");
+      }
+    )
+    // console.log("file path", file_path);
+    // console.log('file name', file_name);
   });
 
   // log any errors that occur

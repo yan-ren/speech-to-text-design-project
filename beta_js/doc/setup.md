@@ -1,6 +1,5 @@
 install node
 
-install npm
 
 npm install
 
