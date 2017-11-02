@@ -20,6 +20,8 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
 
 	<%- include( 'partials/nav' ); %>
 
+	<!-- <%- include( 'partials/search-filters', { listings: listings } ); %> -->
+
 	<div class="content">
 
 		<ul class="listings">
@@ -32,10 +34,24 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
 
       <% listings.forEach( function( listing, i ) { %>
 
-        <li id="<%= listing._id %>">
-          <h3>File name: <%= listing.name %></h3>
-          <p>Path: <%- listing.url %></p>
-          <p>Translated: <%- listing.translated %><p>
+        <li id="<%= i %>">
+
+          <a href="/box/<%= i %>">
+
+            <% if ( listing.image ) { %>
+              <img class="box-image" src="<%= listing.image %>">
+            <% } %>
+
+            <div class="details">
+
+              <h2><%= listing.name %></h2>
+              <h3>$<%= listing.price.toFixed(2) %> per night</h3>
+              <p><%- listing.description %></p>
+
+            </div>
+
+          </a>
+
         </li>
 
       <% }) %>

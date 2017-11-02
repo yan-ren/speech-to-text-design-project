@@ -9,8 +9,8 @@ app.get(  '/listings', function( request, response ) {
       throw err;
     }
 
-    response.json(uploads);
+    // response.json(uploads);
     // TODO: format uploads and pass to templates
-    // response.render( 'listings', { listings: uploads } )
+    response.render( 'listings', { listings: uploads } )
   });
 })

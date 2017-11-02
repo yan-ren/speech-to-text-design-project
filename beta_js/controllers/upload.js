@@ -1,4 +1,4 @@
-/* global app, database, path */
+/* global app, db_Upload, db_Srt, path */
 
 var formidable = require('formidable');
 var fs = require('fs');
@@ -34,10 +34,10 @@ app.post('/upload', function(req, res){
           throw err;
         }
         console.log("DB stores successfully");
+        // console.log("file path:", file_path);
+        // console.log('file name:', file_name);
       }
     )
-    // console.log("file path", file_path);
-    // console.log('file name', file_name);
   });
 
   // log any errors that occur

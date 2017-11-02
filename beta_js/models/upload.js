@@ -36,6 +36,11 @@ module.exports.getUploads = (callback, limit) => {
 	Upload.find(callback).limit(limit);
 }
 
+// Get upload
+module.exports.getUploadById = (id, callback) => {
+  Upload.findById(id, callback);
+}
+
 // Add Upload
 module.exports.addUpload = (upload, callback) => {
 	Upload.create(upload, callback);

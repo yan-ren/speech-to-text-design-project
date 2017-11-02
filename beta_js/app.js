@@ -18,7 +18,7 @@ global.app  = express();
 // global.database  = jsonDb( 'database.json' );
 
 // Connect to Mongoose
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://localhost:27017/test', { useMongoClient: true });
 var db = mongoose.connection;
 
 global.db_Upload = require('./models/upload')
