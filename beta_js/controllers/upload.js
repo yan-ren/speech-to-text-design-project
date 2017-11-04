@@ -7,37 +7,36 @@ app.post('/upload', function(req, res){
 
   // create an incoming form object
   var form = new formidable.IncomingForm();
+  var file_path, file_name, file_tpye, file_language;
+  file_type = 'empty';
+  file_language = 'empty';
 
   // specify that we want to allow the user to upload multiple files in a single request
-  form.multiples = true;
+  form.multiples = false;
 
   // store all uploads in the /uploads directory
   form.uploadDir = path.join(__dirname, '..', '/uploads');
 
+  // parse the incoming request containing the form data
+  form.parse(req);
+
   // every time a file has been uploaded successfully,
   // rename it to it's orignal name
   form.on('file', function(field, file) {
-    var file_path = path.join(form.uploadDir, file.name);
-    var file_name = file.name;
-
-    //TODO: received file type/language from frontend
-    var file_type = 'video'
-    var file_language = 'English'
-
+    file_path = path.join(form.uploadDir, file.name);
+    file_name = file.name;
     fs.rename(file.path, path.join(form.uploadDir, file.name));
-    db_Upload.addUpload({
-        name: file_name,
-        url: file_path,
-        type: file_type,
-      }, function(err){
-        if(err){
-          throw err;
-        }
-        // console.log("One uploaded file successfully stores in db");
-        // console.log("file path:", file_path);
-        // console.log('file name:', file_name);
-      }
-    )
+  });
+
+  form.on('field', function(name, value) {
+    switch (name) {
+      case 'FileLanguage':
+        file_language = value;
+        break;
+      case 'FileType':
+        file_type = value;
+      default:
+    }
   });
 
   // log any errors that occur
@@ -47,10 +46,14 @@ app.post('/upload', function(req, res){
 
   // once all the files have been uploaded, send a response to the client
   form.on('end', function() {
+    db_Upload.addUpload({
+          name: file_name,
+          url: file_path,
+          type: file_type,
+          language: file_language
+        }, function(err){
+          if(err){  throw err;  }
+        })
     res.end('success');
   });
-
-  // parse the incoming request containing the form data
-  form.parse(req);
-
 });

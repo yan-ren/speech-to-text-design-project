@@ -27,7 +27,7 @@ This is our 'home' view.
    .progress_outer {
        border: 1px solid #000;
    }
-   .progress {
+   .progress_bar {
        width: 0%;
        background: #228B22;
        height: 20px;
@@ -45,14 +45,28 @@ This is our 'home' view.
 
   <div class='container'>
           <p>
+              File Type:
+              <form id='_type_form' enctype="multipart/form-data" >
+                <input type="radio" name="type" id="_video" value="video" />Video
+                <input type="radio" name="type" id="_radio" value="radio" checked/>Radio
+              </form>
+          </p>
+          <p>
+              File Language:
+              <form id='_language_form' enctype="multipart/form-data" >
+                <input type="radio" name="language" id="_english" value="english" checked/>English
+                <input type="radio" name="language" id="_french" value="french" />French
+              </form>
+          </p>
+          <p>
               Select File:
-              <form enctype="multipart/form-data">
-                  <input type='file' id='_file' name='uploads[]' multiple="multiple">
-                  <input type='button' id='_submit' value='Upload!'>
+              <form method='POST' id='_file_form' enctype="multipart/form-data" action="/upload">
+                  <input type='file' id='_file' name='file'>
+                  <input type='submit' id='_submit' value='Upload!'>
               </form>
           </p>
           <div class='progress_outer'>
-              <div id='_progress' class='progress'></div>
+              <div id='_progress_bar' class='progress_bar'></div>
           </div>
   </div>
   <script type="text/javascript" src="/js/home.js"></script>
