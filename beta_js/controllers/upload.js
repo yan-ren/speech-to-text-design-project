@@ -33,7 +33,7 @@ app.post('/upload', function(req, res){
         if(err){
           throw err;
         }
-        console.log("DB stores successfully");
+        // console.log("One uploaded file successfully stores in db");
         // console.log("file path:", file_path);
         // console.log('file name:', file_name);
       }

@@ -2,21 +2,16 @@ var mongoose = require('mongoose');
 
 //uploaded files schema
 var srtSchedma = mongoose.Schema({
-  name: {
-    type: String,
-    required: true
+  // file link: link to a uploaded file
+  file_link:{
+    "type": mongoose.Schema.Types.ObjectId, "ref": "uploads"
   },
-  url: {
-    type: String,
-    requried: true
+  content:{
+    type:String
   },
   upload_date: {
     type: Date,
     default: Date.now
-  },
-  // file link: link to a uploaded file
-  file_link:{
-    "type": mongoose.Schema.Types.ObjectId, "ref": "uploads"
   }
 });
 

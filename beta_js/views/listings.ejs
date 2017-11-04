@@ -36,6 +36,11 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
           <h3>File name: <%= listing.name %></h3>
           <p>Path: <%- listing.url %></p>
           <p>Translated: <%- listing.translated %><p>
+          <% if(!listing.translate){ %>
+          <div>
+            <input type='button' class='btn_translate' value='Translate'>
+          </div>
+          <% } %>
         </li>
 
       <% }) %>
@@ -43,7 +48,19 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
 		</ul>
 
 	</div>
+  <script>
+  $( document ).ready(function() {
+    $(".btn_translate").on('click', function(){
+      var id = $(this).closest("li").prop("id");
+      console.log(id);
+    });
 
+
+
+
+    
+  });
+  </script>
   <%- include( 'partials/footer' ); %>
 
 </body>

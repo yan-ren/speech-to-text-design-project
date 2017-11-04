@@ -5,7 +5,8 @@ js mutiple callback function
 
 todo:
 1.api sends file and receives result longer than response timeout
-  idea:Send response and continue to perform tasks
+  idea: frontend adds progress bar for showing backend running process status
+  https://www.codeproject.com/Articles/34072/Displaying-a-Progress-Bar-Loading-Box-During-any-T
 
 2.split file
 

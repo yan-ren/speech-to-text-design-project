@@ -30,6 +30,8 @@ app.listen( process.env.PORT || 8000);
 app.set( 'view engine', 'ejs' )
 // Make the /public folder available for download
 app.use( express.static( 'public' ) );
+//support parsing of application/json type post data
+app.use(bodyParser.json());
 // Read information encoded in the request body ( Mostly forms )
 app.use( bodyParser.urlencoded( { extended: true } ) );
 

@@ -12,15 +12,16 @@ var speech_to_text = new SpeechToTextV1({
 // read file path from db by using id
 // sends file to google api and receives result
 // save result to db_Srt
-app.get(  '/translate/:id', function( request, response ) {
-  var id   = request.params.id;
+app.post(  '/translate', function( request, response ) {
+  var id   = request.body.id;
+  console.log('request body id: ', id);
   db_Upload.getUploadById(id, function(err, upload){
     if(err){
       throw err;
     }
     // The name of the audio file to transcribe
     const fileName = upload.url;
-    console.log('get file: ', fileName);
+    // console.log('get file: ', fileName);
     var params = {
       // From file
       audio: fs.createReadStream(fileName),
@@ -31,8 +32,18 @@ app.get(  '/translate/:id', function( request, response ) {
     speech_to_text.recognize(params, function(err, res) {
       if (err)
         response.send(err);
-      else
+      else{
+      // save to db srt collection
+        db_Srt.addSrt({
+            file_link: id,
+            content: JSON.stringify(res, null, 2)
+          }, function(err){
+            if(err){  throw err;  }
+            // console.log("DB stores successfully");
+          })
         response.send(JSON.stringify(res, null, 2));
+      }
+
     });
   });
   // response.render( 'review', {
