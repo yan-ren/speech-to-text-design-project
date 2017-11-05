@@ -10,3 +10,6 @@ https://console.bluemix.net/docs/services/speech-to-text/input.html#input
 
 4.  Google API restrictions
 https://cloud.google.com/speech/quotas
+
+5.  ffmpeg
+http://www.ffmpeg.org/

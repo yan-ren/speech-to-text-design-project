@@ -9,3 +9,5 @@ sudo apt-get install mongodb
 sudo service mongodb start
 <!-- Stop MongoDB -->
 sudo service mongodb stop
+
+install ffmpeg

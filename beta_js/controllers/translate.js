@@ -46,9 +46,6 @@ app.post(  '/translate', function( request, response ) {
 
     });
   });
-  // response.render( 'review', {
-  //   listing: database.listings[ id ],
-  // });
 })
 
 // This is the POST route for submitting a review. It is where the review form gets submitted
