@@ -31,6 +31,8 @@ This is our 'home' view.
        width: 0%;
        background: #228B22;
        height: 20px;
+       text-align: center;
+       margin:0 auto;
    }
    </style>
 </head>
@@ -45,17 +47,22 @@ This is our 'home' view.
 
   <div class='container'>
           <p>
-              File Type:
+
               <form id='_type_form' enctype="multipart/form-data" >
-                <input type="radio" name="type" id="_video" value="video" />Video
-                <input type="radio" name="type" id="_radio" value="radio" checked/>Radio
+                    <label>File Type: &nbsp; </label>
+                    <label>Video</label>
+                    <input type="radio" name="type" id="_video" value="video" />
+                    <label>Radio</label>
+                    <input type="radio" name="type" id="_radio" value="radio" checked />
               </form>
           </p>
           <p>
-              File Language:
               <form id='_language_form' enctype="multipart/form-data" >
-                <input type="radio" name="language" id="_english" value="english" checked/>English
-                <input type="radio" name="language" id="_french" value="french" />French
+                    <label>File Language: &nbsp; </label>
+                    <label>English</label>
+                    <input type="radio" name="language" id="_english" value="english" checked />
+                    <label>French</label>
+                    <input type="radio" name="language" id="_french" value="french" />
               </form>
           </p>
           <p>

@@ -198,14 +198,14 @@ html, body {
   color: white !important;
 }
 
-form:not(.no-style) label, form:not(.no-style) input, form:not(.no-style) textarea {
-  display: block;
-  width: 100%;
-}
+/*form:not(.no-style) label, form:not(.no-style) input, form:not(.no-style) textarea {*/
+  /*display: block;*/
+  /*width: 100%;*/
+/*}*/
 
-form:not(.no-style) input, form:not(.no-style) textarea {
-  margin-bottom: 5px;
-}
+/*form:not(.no-style) input, form:not(.no-style) textarea {*/
+  /*margin-bottom: 5px;*/
+/*}*/
 
 .hide {
   display: none !important;
