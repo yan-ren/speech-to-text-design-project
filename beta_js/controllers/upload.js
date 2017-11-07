@@ -55,7 +55,7 @@ app.post('/upload', function(req, res){
           language: file_language
         }, function(err){
           if(err){  throw err;  }
-        })
+        });
     res.end('success');
   });
 });

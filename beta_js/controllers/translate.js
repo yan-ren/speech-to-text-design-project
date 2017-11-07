@@ -40,10 +40,14 @@ app.post(  '/translate', function( request, response ) {
           }, function(err, doc){
             if(err){  throw err;  }
 
-            // ISSUE
-            // update media collection
+            // update db file collection
+            // new: bool - if true, return the modified document rather than the original. defaults to false
             db_Media.updateMedia(id, {translated: true,
-                                      srt: doc._id});
+                                      srt: doc._id}, {new: false},
+                                      function(err){
+                                        if(err){  console.log(err); throw err;  }
+                                      }
+                                );
           })
 
 

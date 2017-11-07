@@ -21,8 +21,8 @@ global.app  = express();
 mongoose.connect('mongodb://localhost:27017/test', { useMongoClient: true });
 var db = mongoose.connection;
 
-global.db_Media = require('./models/media')
-global.db_Srt = require('./models/srt')
+global.db_Media = require('./models/media');
+global.db_Srt = require('./models/srt');
 
 // Now we listen for incoming requests
 app.listen( process.env.PORT || 8000);

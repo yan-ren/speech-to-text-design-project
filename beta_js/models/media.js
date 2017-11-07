@@ -26,7 +26,7 @@ var mediaSchedma = mongoose.Schema({
     default: Date.now
   },
   // srt ObjectId
-  srt: { "type": mongoose.Schema.Types.ObjectId, ref: "Srt"}
+  srt: { "type": mongoose.Schema.Types.ObjectId, ref: "Srt", default: null}
 });
 
 const Media = module.exports = mongoose.model('media', mediaSchedma);
