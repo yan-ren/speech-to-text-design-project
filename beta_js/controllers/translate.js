@@ -15,7 +15,7 @@ var speech_to_text = new SpeechToTextV1({
 app.post(  '/translate', function( request, response ) {
   var id   = request.body.id;
   console.log('request body id: ', id);
-  db_Upload.getUploadById(id, function(err, upload){
+  db_Media.getMediaById(id, function(err, upload){
     if(err){
       throw err;
     }
@@ -31,17 +31,24 @@ app.post(  '/translate', function( request, response ) {
 
     speech_to_text.recognize(params, function(err, res) {
       if (err)
-        response.send(err);
+        response.status(400).json({ error: 'errors in translation api' })
       else{
-      // save to db srt collection
+        // save to db srt collection
         db_Srt.addSrt({
-            file_link: id,
+            media_id: id,
             content: JSON.stringify(res, null, 2)
-          }, function(err){
+          }, function(err, doc){
             if(err){  throw err;  }
-            // console.log("DB stores successfully");
+
+            // ISSUE
+            // update media collection
+            db_Media.updateMedia(id, {translated: true,
+                                      srt: doc._id});
           })
+
+
         response.send(JSON.stringify(res, null, 2));
+        // response.end('success');
       }
 
     });

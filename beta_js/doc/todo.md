@@ -4,12 +4,13 @@ https://www.youtube.com/watch?v=YxWMxJONp7E&list=PL4cUxeGkcC9jAhrjtZ9U93UMIhnCc4
 js mutiple callback function
 
 todo:
-1.api sends file and receives result longer than response timeout
+1.  api sends file and receives result longer than response timeout
   idea: frontend adds progress bar for showing backend running process status
   https://www.codeproject.com/Articles/34072/Displaying-a-Progress-Bar-Loading-Box-During-any-T
 
-2.split file
+2.  split file
 
-3.convert video
+3.  convert video
 
-4.listing page add butten to trigger translate request
+issue:
+1.  after create srt document, have issue in updating media document

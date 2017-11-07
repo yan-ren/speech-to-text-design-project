@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 //uploaded files schema
 var srtSchedma = mongoose.Schema({
   // file link: link to a uploaded file
-  file_link:{
+  media_id:{
     "type": mongoose.Schema.Types.ObjectId, "ref": "uploads"
   },
   content:{

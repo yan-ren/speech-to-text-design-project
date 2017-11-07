@@ -48,7 +48,7 @@ app.post('/upload', function(req, res){
 
   // once all the files have been uploaded, send a response to the client
   form.on('end', function() {
-    db_Upload.addUpload({
+    db_Media.addMedia({
           name: file_name,
           url: file_path,
           type: file_type,

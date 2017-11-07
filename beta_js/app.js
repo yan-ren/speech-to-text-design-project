@@ -21,7 +21,7 @@ global.app  = express();
 mongoose.connect('mongodb://localhost:27017/test', { useMongoClient: true });
 var db = mongoose.connection;
 
-global.db_Upload = require('./models/upload')
+global.db_Media = require('./models/media')
 global.db_Srt = require('./models/srt')
 
 // Now we listen for incoming requests

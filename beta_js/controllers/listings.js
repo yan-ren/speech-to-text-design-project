@@ -4,13 +4,13 @@
 // all the listings are passed along the to 'listings' view
 
 app.get(  '/listings', function( request, response ) {
-  db_Upload.getUploads(function(err, uploads){
+  db_Media.getAllMedia(function(err, media){
     if(err){
       throw err;
     }
 
     // response.json(uploads);
     // TODO: format uploads and pass to templates
-    response.render( 'listings', { listings: uploads } )
+    response.render( 'listings', { listings: media } )
   });
 })
