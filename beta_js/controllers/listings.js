@@ -10,7 +10,6 @@ app.get(  '/listings', function( request, response ) {
     }
 
     // response.json(uploads);
-    // TODO: format uploads and pass to templates
     response.render( 'listings', { listings: media } )
   });
 })

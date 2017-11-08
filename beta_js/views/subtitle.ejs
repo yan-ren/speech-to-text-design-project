@@ -1,0 +1,41 @@
+<!-- htmlhint spec-char-escape:false -->
+<!--
+This is the 'listings' view. It loops through all listings passed to it and prints all of them in a list.
+The listings link to their respective '/box/:id' pages.
+
+The list can be filtered using the 'search-filters' partial. It includes javascript to animate the filtering
+-->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <%- include( 'partials/head' ); %>
+  <style>
+
+  </style>
+
+</head>
+
+<body>
+
+	<%- include( 'partials/nav' ); %>
+
+	<div class="content">
+    <div class="features">
+      <p>
+        <%- subtitle  %>
+      </p>
+    </div>
+	</div><!-- content -->
+
+  <script>
+
+  </script>
+  <%- include( 'partials/footer' ); %>
+
+</body>
+
+</html>

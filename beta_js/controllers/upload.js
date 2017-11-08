@@ -3,6 +3,7 @@
 var formidable = require('formidable');
 var fs = require('fs');
 
+// this url is for handling upload form
 app.post('/upload', function(req, res){
 
   // create an incoming form object

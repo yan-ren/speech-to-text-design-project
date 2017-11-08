@@ -1,4 +1,4 @@
-/* global app, db_Upload, db_Srt, path */
+/* global app, db_Upload, db_Sub, path */
 
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
 var fs = require('fs');
@@ -34,7 +34,7 @@ app.post(  '/translate', function( request, response ) {
         response.status(400).json({ error: 'errors in translation api' })
       else{
         // save to db srt collection
-        db_Srt.addSrt({
+        db_Sub.addSub({
             media_id: id,
             content: JSON.stringify(res, null, 2)
           }, function(err, doc){

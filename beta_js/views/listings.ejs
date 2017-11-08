@@ -33,10 +33,17 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
           <p>Language: <%- listing.language %><p>
           <p>Translated: <%- listing.translated %><p>
           <% if(!listing.translated){ %>
-          <div>
-            <input type='button' class='btn_translate' value='Translate'>
-          </div>
+            <div>
+              <input type='button' class='btn_translate' value='Translate'>
+            </div>
+          <% } else{ %>
+            <div>
+              <a href="/subtitle/<%= listing._id %>">
+                <input type='button' class='btn_view' value='View Subtitle'>
+              </a>
+            </div>
           <% } %>
+
         </li>
 
       <% }) %>
@@ -59,8 +66,7 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
       $.post("/translate",{id: id}, function(data, status){
           $('#loading_bar').remove();
           $('.btn_translate').attr('disabled', false);
-
-          // TODO refresh listings page
+          location.reload(true);
           // console.log("Data: " + data + "\nStatus: " + status);
         });
     });

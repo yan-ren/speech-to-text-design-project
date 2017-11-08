@@ -6,7 +6,7 @@ mongoose.connect('mongodb://localhost:27017/test', { useMongoClient: true });
 var db = mongoose.connection;
 
 global.db_Media = require('./../models/media');
-global.db_Srt = require('./../models/srt');
+global.db_Sub = require('./../models/sub');
 
 // test addMedia
 function test1(){
@@ -28,7 +28,7 @@ function test1(){
 function test2(){
   var id = '5a01ac5bb4fb7625d3252a62';
 
-  db_Srt.addSrt({
+  db_Sub.addSub({
       media_id: id,
       content: '123'
     }, function(err, doc){

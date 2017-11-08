@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 //uploaded files schema
-var srtSchedma = mongoose.Schema({
+var subSchedma = mongoose.Schema({
   media_id:{
     type: mongoose.Schema.Types.ObjectId, ref: "media"
   },
@@ -14,20 +14,20 @@ var srtSchedma = mongoose.Schema({
   }
 });
 
-const Srt = module.exports = mongoose.model('srt', srtSchedma);
+const Sub = module.exports = mongoose.model('sub', subSchedma);
 
-// Get Srts
-module.exports.getSrt = (callback, limit) => {
-	Srt.find(callback).limit(limit);
+// Get Sub
+module.exports.getSub = (callback, limit) => {
+	Sub.find(callback).limit(limit);
 }
-// Get Srt
-module.exports.getSrtById = (id, callback) => {
-  Srt.findById(id, callback);
+// Get Sub
+module.exports.getSubById = (id, callback) => {
+  Sub.findById(id, callback);
 }
 
-// Add Srt
-module.exports.addSrt = (upload, callback) => {
-	Srt.create(upload, callback);
+// Add Sub
+module.exports.addSub = (upload, callback) => {
+	Sub.create(upload, callback);
 }
 
 // // Update Genre
