@@ -18,6 +18,9 @@ global.app  = express();
 // global.database  = jsonDb( 'database.json' );
 
 // Connect to Mongoose
+// Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname, details set in .env
+// mongodb://<dbuser>:<dbpassword>@ds259865.mlab.com:59865/speech_to_text_sendbox
+var MONGODB_URI = 'mongodb://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.DB_PORT+'/'+process.env.DB;
 mongoose.connect('mongodb://localhost:27017/test', { useMongoClient: true });
 var db = mongoose.connection;
 
