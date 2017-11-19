@@ -4,6 +4,16 @@ https://www.youtube.com/watch?v=YxWMxJONp7E&list=PL4cUxeGkcC9jAhrjtZ9U93UMIhnCc4
 js mutiple callback function
 
 TODO:
+1.  view subtitles in a new open window or tab
+
+2.  split file listing view(translated vs non-translated)
+    sorting files based on timestamp
+
+3.  mutiple translate requests
+
+4.  Google API English/French   
+
+FUTURE:
 1.  split file
 
 2.  convert video
