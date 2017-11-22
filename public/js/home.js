@@ -8,7 +8,7 @@ $('#_file').on('click', function (){
 $('#_file_form').submit(function(event){
   event.preventDefault();
   console.log('start uploading');
-  if($('input[type=file]')[0].files === 0){
+  if($('input[type=file]')[0].files.length== 0){
     console.log('no file selected');
     return;
   }
@@ -19,32 +19,41 @@ $('#_file_form').submit(function(event){
   data.append('FileType', document.querySelector('input[name="type"]:checked').value);
   data.append('FileLanguage', document.querySelector('input[name="language"]:checked').value);
 
-  var request = new XMLHttpRequest();
-  request.onreadystatechange = function(){
-      if(request.readyState == 4){
-          try {
-              var resp = JSON.parse(request.response);
-              console.log(resp.status + ': ' + resp.data);
-          } catch (e){
-              var resp = {
-                  status: 'error',
-                  data: 'Unknown error occurred: [' + request.responseText + ']'
-              };
+  $.ajax({
+      url: '/upload',
+      type: 'POST',
+      data: data,
+      processData: false,
+      contentType: false,
+      success: function(data){
+          console.log('upload successful!\n' + data);
+      },
+      xhr: function() {
+        // create an XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+
+        // listen to the 'progress' event
+        xhr.upload.addEventListener('progress', function(evt) {
+
+          if (evt.lengthComputable) {
+            // calculate the percentage of upload completed
+            var percentComplete = evt.loaded / evt.total;
+            percentComplete = parseInt(percentComplete * 100);
+
+            // update the Bootstrap progress bar with the new percentage
+            $('.progress_bar').width(percentComplete + '%');
+            $('.progress_bar').text(percentComplete + '%');
+
+            // once the upload reaches 100%, set the progress bar text to done
+            if (percentComplete === 100) {
+              $('.progress_bar').html('Done');
+            }
+
           }
+
+        }, false);
+
+        return xhr;
       }
-  };
-
-  request.upload.addEventListener('progress', function(e){
-      var percent_complete = Math.ceil(e.loaded/e.total) * 100;
-      $('.progress_bar').width(percent_complete + '%');
-      $('.progress_bar').text(percent_complete + '%');
-
-      // once the upload reaches 100%, set the progress bar text to done
-      if (percent_complete === 100) {
-        $('.progress_bar').html('Done');
-      }
-  }, false);
-
-  request.open('POST', '/upload');
-  request.send(data);
+    });
 });

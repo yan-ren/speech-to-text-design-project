@@ -48,11 +48,11 @@ app.post(  '/translate', function( request, response ) {
                                         if(err){  console.log(err); throw err;  }
                                       }
                                 );
-          })
+          }); // addSub
 
 
-        response.send(JSON.stringify(res, null, 2));
-        // response.end('success');
+        // response.send(JSON.stringify(res, null, 2));
+        response.end('success');
       }
 
     });

@@ -62,13 +62,15 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
 
       var id = $(this).closest("li").prop("id");
       console.log(id);
-      //
+      // ISSUE
       $.post("/translate",{id: id}, function(data, status){
           $('#loading_bar').remove();
           $('.btn_translate').attr('disabled', false);
           location.reload(true);
-          // console.log("Data: " + data + "\nStatus: " + status);
-        });
+          console.log("Data: " + data + "\nStatus: " + status);
+        }
+      );
+      //
     });
 
   });
