@@ -38,8 +38,8 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
             </div>
           <% } else{ %>
             <div>
-              <a href="/subtitle/<%= listing._id %>">
-                <input type='button' class='btn_view' value='View Subtitle'>
+              <a href="/subtitle/<%= listing._id %>", target="_blank">
+                <input type='button' class='btn_view', value='View Subtitle'>
               </a>
             </div>
           <% } %>
@@ -61,15 +61,32 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
       $('.listings').prepend('<div id="loading_bar" ><img src="/images/loadingfinal.gif"/></div>');
 
       var id = $(this).closest("li").prop("id");
-      console.log(id);
+      // console.log(id);
+      $.ajax({
+        url: '/translate',
+        type: 'POST',
+        timeout: 0,
+        data: {id: id},
+        success: function(response, status){
+            // $('#loading_bar').remove();
+            // $('.btn_translate').attr('disabled', false);
+            location.reload(true);
+            console.log("Data: " + response + "\nStatus: " + status);
+          },
+        error: function(request,error) {
+              console.log(request.responseText);
+              console.log(error);
+          }
+      });
+
       // ISSUE
-      $.post("/translate",{id: id}, function(data, status){
-          $('#loading_bar').remove();
-          $('.btn_translate').attr('disabled', false);
-          location.reload(true);
-          console.log("Data: " + data + "\nStatus: " + status);
-        }
-      );
+      // $.post("/translate", {id: id}, function(data, status){
+      //     $('#loading_bar').remove();
+      //     $('.btn_translate').attr('disabled', false);
+      //     location.reload(true);
+      //     console.log("Data: " + data + "\nStatus: " + status);
+      //   }
+      // );
       //
     });
 

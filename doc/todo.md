@@ -1,15 +1,20 @@
 STUDY:
-js anyc callback function
+1.  js anyc callback function
 https://www.youtube.com/watch?v=YxWMxJONp7E&list=PL4cUxeGkcC9jAhrjtZ9U93UMIhnCc44MH
-js mutiple callback function
+
+2.  js mutiple callback function
+
+3.  Video transcription tool
+https://medium.com/glitch-digital/preview-of-a-video-transcription-tool-452e043daef5?from=groupmessage&isappinstalled=0
 
 TODO:
-1.  view subtitles in a new open window or tab
+1.  ISSUE long file translation
+https://blog.robseder.com/2013/10/18/executing-a-long-running-process-from-a-web-page/
 
-2.  split file listing view(translated vs non-translated)
+2.  delete the file from upload folder once translation finished
+
+3.  split file listing view(translated vs non-translated)
     sorting files based on timestamp
-
-3.  mutiple translate requests
 
 4.  Google API English/French   
 
