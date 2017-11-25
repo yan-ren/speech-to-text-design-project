@@ -9,7 +9,7 @@ var speech_to_text = new SpeechToTextV1({
 });
 
 // This function is for checking if a file has been translated
-app.get(  '/translate/:id', function(request, response){
+app.get(  '/transcribe/:id', function(request, response){
   var id = request.params.id;
   // console.log('get id: ', id);
   db_Media.getMediaById(id, function(err, media){
@@ -23,7 +23,7 @@ app.get(  '/translate/:id', function(request, response){
 // read file path from db by using id
 // sends file to google api and receives result
 // save result to db_Sub
-app.post(  '/translate', function( request, response ) {
+app.post(  '/transcribe', function( request, response ) {
   var id   = request.body.id;
   db_Media.getMediaById(id, function(err, upload){
     if(err){
@@ -53,7 +53,7 @@ app.post(  '/translate', function( request, response ) {
 
             // update db file collection
             // new: bool - if true, return the modified document rather than the original. defaults to false
-            db_Media.updateMedia(id, {translated: true,
+            db_Media.updateMedia(id, {transcribe: true,
                                       srt: doc._id}, {new: false},
                                       function(err){
                                         if(err){  console.log(err); throw err;  }

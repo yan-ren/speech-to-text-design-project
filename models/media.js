@@ -10,7 +10,7 @@ var mediaSchedma = mongoose.Schema({
     type: String,
     requried: true
   },
-  translated: {
+  transcribe: {
     type: Boolean,
     default: false
   },

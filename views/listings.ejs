@@ -31,10 +31,10 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
         <li id="<%= listing._id %>">
           <h3>File name: <%= listing.name %></h3>
           <p>Language: <%- listing.language %><p>
-          <p>Translated: <%- listing.translated %><p>
-          <% if(!listing.translated){ %>
+          <p>Transcribe: <%- listing.transcribe %><p>
+          <% if(!listing.transcribe){ %>
             <div>
-              <input type='button' class='btn_translate' value='Translate'>
+              <input type='button' class='btn_translate' value='Transcribe'>
             </div>
           <% } else{ %>
             <div>
@@ -63,7 +63,7 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
       var id = $(this).closest("li").prop("id");
       // console.log(id);
       $.ajax({
-        url: '/translate',
+        url: '/transcribe',
         type: 'POST',
         timeout: 0,
         data: {id: id},
