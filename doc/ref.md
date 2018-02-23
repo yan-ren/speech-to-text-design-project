@@ -51,3 +51,13 @@ https://catbnb.glitch.me/
 7.  glitch
 
 8.  mLab
+
+9. Goolge cloud storage
+https://cloud.google.com/docs/authentication/production#obtaining_and_providing_service_account_credentials_manually
+https://www.npmjs.com/package/@google-cloud/storage
+API https://cloud.google.com/nodejs/docs/reference/storage/1.5.x/File#getSignedUrl
+https://console.cloud.google.com/storage/browser/speech-to-text-sendbox?project=speech-to-text-sandbox-194702
+
+10. Google cloud speech
+API https://cloud.google.com/nodejs/docs/reference/speech/1.1.x/v1.SpeechClient#longRunningRecognize
+https://cloud.google.com/speech/reference/rest/v1beta1/RecognitionConfig#audioencoding

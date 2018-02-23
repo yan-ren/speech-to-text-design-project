@@ -8,15 +8,17 @@ https://www.youtube.com/watch?v=YxWMxJONp7E&list=PL4cUxeGkcC9jAhrjtZ9U93UMIhnCc4
 https://medium.com/glitch-digital/preview-of-a-video-transcription-tool-452e043daef5?from=groupmessage&isappinstalled=0
 
 TODO:
-1.  ISSUE long file translation
+1.  Google suppport
+ISSUE:
+  - When to remove the file from server
+  - error from google speech api "Invalid audio channel count"
+  - flac format file 
+
+2.  bootstrap
+
+3.  ISSUE long file translation
 https://blog.robseder.com/2013/10/18/executing-a-long-running-process-from-a-web-page/
 
-2.  delete the file from upload folder once translation finished
-
-3.  split file listing view(translated vs non-translated)
-    sorting files based on timestamp
-
-4.  Google API English/French   
 
 FUTURE:
 1.  split file

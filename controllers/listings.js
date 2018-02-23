@@ -3,13 +3,24 @@
 // This is the page for listing all the available boxes
 // all the listings are passed along the to 'listings' view
 
-app.get(  '/listings', function( request, response ) {
+app.get(  '/media', function( req, res ) {
   db_Media.getAllMedia(function(err, media){
     if(err){
       throw err;
     }
 
-    // response.json(uploads);
-    response.render( 'listings', { listings: media } )
+    res.json(media);
+    //response.render( 'listings', { listings: media } )
+  });
+})
+
+app.get(  '/media/:id', function( req, res ) {
+  db_Media.getMediaById( req.params.id, function(err, media){
+    if(err){
+      throw err;
+    }
+
+    res.json(media);
+    // response.render( 'listings', { listings: media } )
   });
 })

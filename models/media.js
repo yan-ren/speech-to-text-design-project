@@ -6,7 +6,7 @@ var mediaSchedma = mongoose.Schema({
     type: String,
     required: true
   },
-  url: {
+  uri: {
     type: String,
     requried: true
   },
@@ -26,7 +26,7 @@ var mediaSchedma = mongoose.Schema({
     default: Date.now
   },
   // srt ObjectId
-  srt: { "type": mongoose.Schema.Types.ObjectId, ref: "Srt", default: null}
+  sub: { "type": mongoose.Schema.Types.ObjectId, ref: "Sub", default: null}
 });
 
 const Media = module.exports = mongoose.model('media', mediaSchedma);

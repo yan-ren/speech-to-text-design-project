@@ -16,7 +16,7 @@ var subSchedma = mongoose.Schema({
 
 const Sub = module.exports = mongoose.model('sub', subSchedma);
 
-// Get Sub
+// Get all Subs
 module.exports.getSub = (callback, limit) => {
 	Sub.find(callback).limit(limit);
 }

@@ -8,6 +8,7 @@ $('#_file').on('click', function (){
 $('#_file_form').submit(function(event){
   event.preventDefault();
   console.log('start uploading');
+
   if($('input[type=file]')[0].files.length== 0){
     console.log('no file selected');
     return;
@@ -15,7 +16,8 @@ $('#_file_form').submit(function(event){
 
   var data = new FormData();
 
-  data.append('SelectedFile', $('input[type=file]')[0].files[0]);
+  // data.append('SelectedFile', $('input[type=file]')[0].files[0]);
+  data.append('FileName', $('input[type=file]')[0].files[0].value);
   data.append('FileType', document.querySelector('input[name="type"]:checked').value);
   data.append('FileLanguage', document.querySelector('input[name="language"]:checked').value);
 
