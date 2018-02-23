@@ -2,7 +2,7 @@ TODO:
 1.  Audio file convension
   Requirements:
   - input audio file in mutiple format and mutiple channel
-  - output audio file in SLAC format and in sigle channel(mono)
+  - output audio file in FLAC format and in sigle channel(mono)
   - develop code in "test" folder
   Refer to following google document for details
   - https://cloud.google.com/speech/reference/rest/v1/RecognitionConfig#AudioEncoding
