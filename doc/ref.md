@@ -60,4 +60,5 @@ https://console.cloud.google.com/storage/browser/speech-to-text-sendbox?project=
 
 10. Google cloud speech
 API https://cloud.google.com/nodejs/docs/reference/speech/1.1.x/v1.SpeechClient#longRunningRecognize
-https://cloud.google.com/speech/reference/rest/v1beta1/RecognitionConfig#audioencoding
+file encoding https://cloud.google.com/speech/reference/rest/v1/RecognitionConfig#AudioEncoding
+https://cloud.google.com/speech/docs/basics#time-offsets
