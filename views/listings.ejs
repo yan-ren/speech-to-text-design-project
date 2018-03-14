@@ -29,7 +29,7 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
 
       <% listings.forEach( function( listing, i ) { %>
         <li id="<%= listing._id %>">
-          <h3>File name: <%= listing.name %></h3>
+          <h3><%= listing.name %></h3>
           <p>Language: <%- listing.language %><p>
           <p>Transcribe: <%- listing.transcribe %><p>
           <% if(!listing.transcribe){ %>
@@ -63,7 +63,7 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
       var id = $(this).closest("li").prop("id");
       // console.log(id);
       $.ajax({
-        url: '/transcribe',
+        url: '/stt/gcs',
         type: 'POST',
         timeout: 0,
         data: {id: id},

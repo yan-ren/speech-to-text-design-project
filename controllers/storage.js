@@ -31,11 +31,11 @@ app.get('/storage/link/:filename', function(req, res){
 
 // directly upload to google storage
 app.post('/storage', function(req, res){
-
-
+  
   // create an incoming form object
   var form = new formidable.IncomingForm();
   var filePath, fileName, fileType, fileLanguage;
+
   fileType = 'empty';
   fileLanguage = 'empty';
 
@@ -51,11 +51,15 @@ app.post('/storage', function(req, res){
   // every time a file has been uploaded successfully,
   // rename it to it's orignal name
   form.on('file', function(field, file) {
+
     filePath = path.join(form.uploadDir, file.name);
     fileName = file.name;
     fs.rename(file.path, path.join(form.uploadDir, file.name), function(err){
       if (err) throw err;
     });
+
+    //TODO: add audio file conversion function here
+
     storage
       .bucket(bucketName)
       .upload(filePath)
@@ -63,9 +67,7 @@ app.post('/storage', function(req, res){
         console.log(`${fileName} uploaded to ${bucketName}.`);
         db_Media.addMedia({
               name: fileName,
-              // TODO: this needs to be a url that can be used by speech api
-              uri: filePath,
-              //
+              uri: 'gs://'+ bucketName+ '/'+fileName,
               type: fileType,
               language: fileLanguage
             }, function(err){

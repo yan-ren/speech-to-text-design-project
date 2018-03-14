@@ -16,13 +16,13 @@ $('#_file_form').submit(function(event){
 
   var data = new FormData();
 
-  // data.append('SelectedFile', $('input[type=file]')[0].files[0]);
-  data.append('FileName', $('input[type=file]')[0].files[0].value);
-  data.append('FileType', document.querySelector('input[name="type"]:checked').value);
-  data.append('FileLanguage', document.querySelector('input[name="language"]:checked').value);
+  data.append('SelectedFile', $('input[type=file]')[0].files[0]);
+  data.append('fileName', $('input[type=file]')[0].files[0].value);
+  data.append('fileType', document.querySelector('input[name="type"]:checked').value);
+  data.append('fileLanguage', document.querySelector('input[name="language"]:checked').value);
 
   $.ajax({
-      url: '/upload',
+      url: '/storage',
       type: 'POST',
       data: data,
       processData: false,

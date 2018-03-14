@@ -9,8 +9,8 @@ app.get(  '/media', function( req, res ) {
       throw err;
     }
 
-    res.json(media);
-    //response.render( 'listings', { listings: media } )
+//    res.json(media);
+    res.render( 'listings', { listings: media } )
   });
 })
 
