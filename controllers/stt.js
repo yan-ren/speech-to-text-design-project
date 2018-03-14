@@ -49,30 +49,56 @@ app.post('/stt/gcs', function( req, res ) {
       config: config,
       audio: audio,
     }
-    client
-       .longRunningRecognize(request)
-       .then(data => {
-         const operation = data[0];
-         // Get a Promise representation of the final result of the job
-         return operation.promise();
-       })
-       .then(data => {
-         const response = data[0];
-         const transcription = response.results
-           .map(result => result.alternatives[0].transcript)
-           .join('\n');
+    client.longRunningRecognize(request)
+      .then(responses => {
+        var operation = responses[0];
+        var initialApiResponse = responses[1];
 
-         //TODO: save to db
-         console.log('raw data: ' + data);
-         console.log(`Transcription: ${transcription}`);
-/*
-raw data: .google.cloud.speech.v1.LongRunningRecognizeResponse,.google.cloud.speech.v1.LongRunningRecognizeMetadata,[object Object]
-Transcription: the more than half a Century men and boys I've been picking up at the Australian political scene like an office on the garbage bin and now it is for the hot both heavy and light that I approach the microphone for what is the last time looking back at the political week and the last time on it I am at the end of 42 years is a journalist which began on a summer Monday morning at the end of 1975 when I walk into Rupert Murdoch's news limited building took the list to the 4th floor turn left and left into the partition Newsroom of the Daily Telegraph and joined in what was then in part the demolition of the few remaining shattered Parts the half pillars of the whitlam government
-*/
-       })
-       .catch(err => {
-         console.error('ERROR:', err);
-       });
+        // Adding a listener for the "complete" event starts polling for the
+        // completion of the operation.
+        operation.on('complete', (result, metadata, finalApiResponse) => {
+          // console.log('result: ');
+          // console.log(JSON.stringify(result));
+          // console.log('metadata: ');
+          // console.log(JSON.stringify(metadata));
+          // console.log('finalApiResponse: ');
+          // console.log(JSON.stringify(finalApiResponse));
+          // save to db srt collection
+           db_Sub.addSub({
+               media_id: req.body.id,
+//               content: JSON.stringify(res, null, 2)
+               content: result.results[0].alternatives[0].transcript
+             }, function(err, doc){
+               if(err){  throw err;  }
+
+               // update db file collection
+               // new: bool - if true, return the modified document rather than the original. defaults to false
+               db_Media.updateMedia(req.body.id, {transcribe: true,
+                                         sub: doc._id}, {new: false},
+                                         function(err){
+                                           if(err){  console.log(err); throw err;  }
+                                         }
+                                   );
+             }); // addSub
+           // response.send(JSON.stringify(res, null, 2));
+           res.end('success');
+
+        });
+
+        // Adding a listener for the "progress" event causes the callback to be
+        // called on any change in metadata when the operation is polled.
+        operation.on('progress', (metadata, apiResponse) => {
+          // doSomethingWith(metadata)
+        });
+
+        // Adding a listener for the "error" event handles any errors found during polling.
+        operation.on('error', err => {
+          throw(err);
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
   });
 
 

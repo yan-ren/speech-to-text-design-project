@@ -6,7 +6,7 @@ app.get(  '/subtitle/:id', function( request, response ) {
   db_Media.getMediaById(id, function(err, media){
     if(err){  throw err;  }
 
-    db_Sub.getSubById(media.srt, function(err, sub){
+    db_Sub.getSubById(media.sub, function(err, sub){
       if(err){  throw err;  }
       // console.log('get sub: ', sub);
       response.render( 'subtitle', { subtitle: sub.content } )
