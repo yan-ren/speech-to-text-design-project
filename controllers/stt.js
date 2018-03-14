@@ -65,6 +65,10 @@ app.post('/stt/gcs', function( req, res ) {
          //TODO: save to db
          console.log('raw data: ' + data);
          console.log(`Transcription: ${transcription}`);
+/*
+raw data: .google.cloud.speech.v1.LongRunningRecognizeResponse,.google.cloud.speech.v1.LongRunningRecognizeMetadata,[object Object]
+Transcription: the more than half a Century men and boys I've been picking up at the Australian political scene like an office on the garbage bin and now it is for the hot both heavy and light that I approach the microphone for what is the last time looking back at the political week and the last time on it I am at the end of 42 years is a journalist which began on a summer Monday morning at the end of 1975 when I walk into Rupert Murdoch's news limited building took the list to the 4th floor turn left and left into the partition Newsroom of the Daily Telegraph and joined in what was then in part the demolition of the few remaining shattered Parts the half pillars of the whitlam government
+*/
        })
        .catch(err => {
          console.error('ERROR:', err);

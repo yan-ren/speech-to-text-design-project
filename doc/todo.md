@@ -7,9 +7,11 @@ TODO:
   Refer to following google document for details
   - https://cloud.google.com/speech/reference/rest/v1/RecognitionConfig#AudioEncoding
 
-2.  backend functions for retrieve audio file from GCS
+2.  Bootstrap for home page and listing page
 
-3.  frontend mock
+3.  Test case for models/media and /sub  
+
+4.  frontend mock
   - https://github.com/glitchdigital/video-transcriber
   - https://codepen.io/VietRC/pen/bLGLMr
 
