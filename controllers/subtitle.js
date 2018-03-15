@@ -8,8 +8,9 @@ app.get(  '/subtitle/:id', function( request, response ) {
 
     db_Sub.getSubById(media.sub, function(err, sub){
       if(err){  throw err;  }
-      // console.log('get sub: ', sub);
-      response.render( 'subtitle', { subtitle: sub.content } )
+      data = { subtitle: sub.content,
+              　audio: media.name}
+      response.render( 'subtitle',  data)
     })
 
   });
