@@ -30,14 +30,14 @@ module.exports.addSub = (upload, callback) => {
 	Sub.create(upload, callback);
 }
 
-// // Update Genre
-// module.exports.updateGenre = (id, genre, options, callback) => {
-// 	var query = {_id: id};
-// 	var update = {
-// 		name: genre.name
-// 	}
-// 	Genre.findOneAndUpdate(query, update, options, callback);
-// }
+// Update Sub
+module.exports.updateSub = (id, sub, options, callback) => {
+	var query = {_id: id};
+	var update = {
+		content: sub
+	}
+	Sub.findOneAndUpdate(query, update, options, callback);
+}
 
 
 // // Delete Genre

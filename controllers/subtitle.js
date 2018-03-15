@@ -9,9 +9,20 @@ app.get(  '/subtitle/:id', function( request, response ) {
     db_Sub.getSubById(media.sub, function(err, sub){
       if(err){  throw err;  }
       data = { subtitle: sub.content,
-              　audio: media.name}
+              　audio: media.name,
+                _id: sub._id}
       response.render( 'subtitle',  data)
     })
 
+  });
+})
+
+app.post( '/subtitle/save/:id', function(req, res){
+  var content = req.body.content;
+
+  db_Sub.updateSub(req.params.id, content, null, function(err){
+    if(err){  throw err;  }
+
+    res.end('success');
   });
 })

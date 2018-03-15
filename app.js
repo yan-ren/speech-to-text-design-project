@@ -31,7 +31,7 @@ global.db_Sub = require('./models/sub');
 // Now we listen for incoming requests
 app.listen( process.env.PORT || 8000);
 // Support EJS templates http://ejs.co
-app.set( 'view engine', 'ejs' )
+app.set( 'view engine', 'ejs' );
 // Make the /public folder available for download
 app.use( express.static( 'public' ) );
 app.use( express.static( 'uploads' ) );
