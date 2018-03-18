@@ -3,31 +3,22 @@
 <html>
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
-  <!-- jQuery UI -->
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <title>Text editor</title>
+
+  <%- include( 'partials/head' ); %>
+
   <style>
     .text_edit {
       width: 500px;
       height: 300px;
       resize: none;
     }
-
-    #view_text {
-      width: 500px;
-    }
   </style>
 </head>
 
 <body>
-
-  <!-- Knapper -->
   <br />
-  <h1 style="margin: 0;">Audio Transcription Tool</h1>
-  <p id="blockquote" class="blockquote" style="margin-top: 10px; margin-bottom: 30px; display: inline-block;"><%= data.audio %></p>
+  <h1 style="margin: 0;">Audio Transcription Editing Tool</h1>
+  <p id="blockquote" class="blockquote" ><%= data.audio %></p>
 
   <div class="clearfix">
     <Audio id="audio" controls="true" src="/<%= data.audio %>" style="width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 30px;" />
@@ -37,13 +28,9 @@
   <textarea class="text_edit" id="my_text"><%= data.subtitle %></textarea>
   <br />
 
-  <!-- Submit button -->
-  <!-- <input type="button" value="Download" onclick="view_text()" /> -->
   <input type="button" id="dwn-btn" value="Download as text file"/>
   <input type="button" id="save-btn" value="Save" onclick="save('<%= data._id %>')"/>
-  <!-- Empty div to put the text in -->
-  <!-- <div id="view_text">
-  </div> -->
+
   <script type="text/javascript">
     function download(filename, text) {
       var element = document.createElement('a');
@@ -60,7 +47,6 @@
 
     // Start file download.
     document.getElementById("dwn-btn").addEventListener("click", function() {
-      // Generate download of hello.txt file with some content
       var text = document.getElementById("my_text").value;
       var filename = document.getElementById("blockquote").innerHTML+'.txt';
 
@@ -68,7 +54,6 @@
     }, false);
 
     function save(id) {
-      // Generate download of hello.txt file with some content
       var text = document.getElementById("my_text").value;
       $.ajax({
         url: '/subtitle/save/'+ id,
@@ -76,8 +61,6 @@
         timeout: 0,
         data: {content: text},
         success: function(response, status){
-            // $('#loading_bar').remove();
-            // $('.btn_translate').attr('disabled', false);
             //location.reload(true);
             console.log("Data: " + response + "\nStatus: " + status);
           },
