@@ -51,8 +51,8 @@ This is our 'home' view.
                     <br />
                     <form class="form-inline" id='_type_form' enctype="multipart/form-data" >
                         <label>File Type: &nbsp; </label>
-                        <label>Video&nbsp;</label>
-                        <input type="radio" name="type" id="_video" value="video" />
+                        <!-- <label>Video&nbsp;</label>
+                        <input type="radio" name="type" id="_video" value="video" /> -->
                         <label>Audio</label>
                         <input type="radio" name="type" id="_audio" value="audio" checked />
                     </form>
@@ -75,7 +75,8 @@ This is our 'home' view.
                     <br/>
 
                     <div class='progress_outer'>
-                        <div id='_progress_bar' class='progress_bar'></div>
+                      <div id="loading_bar" style="display: none;"><img src="/images/loadingfinal.gif"/></div>
+                        <!-- <div id='_progress_bar' class='progress_bar'></div> -->
                     </div>
                 </div>
             </div>
