@@ -8,28 +8,53 @@
 
   <style>
     .text_edit {
-      width: 500px;
-      height: 300px;
+      font-family: Calibri;
+
+      width: 600px;
+      height: 250px;
       resize: none;
     }
+
   </style>
 </head>
 
 <body>
-  <br />
-  <h1 style="margin: 0;">Audio Transcription Editing Tool</h1>
-  <p id="blockquote" class="blockquote" ><%= data.audio %></p>
+<%- include( 'partials/nav' ); %>
 
-  <div class="clearfix">
-    <Audio id="audio" controls="true" src="/<%= data.audio %>" style="width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 30px;" />
+<div class="main" style="background-image: url('/images/default.jpg')">
+
+  <!--    Change the image source '/images/default.jpg' with your favourite image.     -->
+
+  <div class="cover black" data-color="black"></div>
+
+  <!--   You can change the black color for the filter with those colors: blue, green, red, orange       -->
+
+  <div class='container'>
+    <h1 class="logo cursive">
+      Audio Transcription Editing Tool
+    </h1>
+
+    <div class="content">
+      <div class="row" >
+        <div class="col-md-8 col-md-offset-3 col-sm6-6 col-sm-offset-3 ">
+        <p id="blockquote" class="blockquote" ><%= data.audio %></p>
+        <p><Audio id="audio" controls="true" src="/<%= data.audio %>" style="width: 80%; margin-bottom: 10px;" /></p>
+
+          <!-- Text area -->
+          <textarea class="text_edit" id="my_text"><%= data.subtitle %></textarea>
+          <br/><br/>
+
+          <input type="button" id="dwn-btn" value="Download as text file"/>&nbsp;&nbsp;
+          <input type="button" id="save-btn" value="Save" onclick="save('<%= data._id %>')"/>
+
+        </div>
+      </div>
+
+
+    </div>
+
   </div>
 
-  <!-- Text area -->
-  <textarea class="text_edit" id="my_text"><%= data.subtitle %></textarea>
-  <br />
-
-  <input type="button" id="dwn-btn" value="Download as text file"/>
-  <input type="button" id="save-btn" value="Save" onclick="save('<%= data._id %>')"/>
 
   <script type="text/javascript">
     function download(filename, text) {
@@ -72,6 +97,8 @@
     }
 
   </script>
+  <%- include( 'partials/footer' ); %>
+</div>
 </body>
 
 </html>

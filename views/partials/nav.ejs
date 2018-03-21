@@ -4,11 +4,46 @@
 This partial prints out the site's navigation bar
 -->
 
-<div class="nav">
-  <ul>
-    <li class="name"><a href="/"><img src="https://cdn.gomix.com/b07a12d5-7910-4ca6-9f1f-ae0aa2d99417%2Fcatbnb-logo-white.png">&nbsp;&nbsp;Speech to Text Tool</a></li>
-    <li><a href="/">Home</a></li>
-    <li><a href="/media">File List</a></li>
-    <!-- <li><a href="/transcript">View Subtitles</a></li> -->
-  </ul>
-</div>
+<nav class="navbar navbar-transparent navbar-fixed-top" role="navigation">
+  <div class="container">
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <img src="/images/flags/US.png"/>
+            English(US)
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><img src="/images/flags/FR.png"/> Français</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/">
+            <img src="https://cdn.gomix.com/b07a12d5-7910-4ca6-9f1f-ae0aa2d99417%2Fcatbnb-logo-white.png" weight="25px" height="25px" />
+            &nbsp;&nbsp;Speech to Text Tool
+          </a>
+        </li>
+        <li>
+          <a href="/">
+            <i class="fa fa-folder-open-o"></i>
+            &nbsp;Home
+          </a>
+        </li>
+        <li>
+          <a href="/media">
+            <i class="fa fa-bars"></i>
+            &nbsp;File List
+          </a>
+        </li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container -->
+</nav>
+

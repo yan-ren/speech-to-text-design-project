@@ -20,37 +20,58 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
 </head>
 
 <body>
+<%- include( 'partials/nav' ); %>
+<div class="main" style="background-image: url('images/default.jpg')">
 
-	<%- include( 'partials/nav' ); %>
+  <!--    Change the image source '/images/default.jpg' with your favourite image.     -->
 
-	<div class="content">
+  <div class="cover black" data-color="black"></div>
 
-		<ul class="listings">
+  <!--   You can change the black color for the filter with those colors: blue, green, red, orange       -->
 
-      <% listings.forEach( function( listing, i ) { %>
-        <li id="<%= listing._id %>">
-          <h3><%= listing.name %></h3>
-          <p>Language: <%- listing.language %><p>
-          <p>Transcribe: <%- listing.transcribe %><p>
-          <% if(!listing.transcribe){ %>
-            <div>
-              <input type='button' class='btn_translate' value='Transcribe'>
-            </div>
-          <% } else{ %>
-            <div>
-              <a href="/subtitle/<%= listing._id %>", target="_blank">
-                <input type='button' class='btn_view', value='View Subtitle'>
-              </a>
-            </div>
-          <% } %>
+  <div class='container'>
+    <h1 class="logo cursive">
+      Speech To Text
+    </h1>
 
-        </li>
+    <div class="content">
+      <div class="row" >
+        <div class="col-md-4 col-md-offset-4 col-sm6-6 col-sm-offset-3 ">
+          <ul class="listings">
 
-      <% }) %>
+              <% listings.forEach( function( listing, i ) { %>
+            <li id="<%= listing._id %>">
+              <h4><%= listing.name %></h4>
+              <p>
+                Language: <%- listing.language %> &nbsp;&nbsp;&nbsp;
+                Transcribe: <%- listing.transcribe %>
+              </p>
+                    <% if(!listing.transcribe){ %>
+              <div>
+                <input type='button' class='btn_translate' value='Transcribe'>
+              </div>
+                <% } else{ %>
+              <div>
+                <a href="/subtitle/<%= listing._id %>", target="_blank">
+                  <input type='button' class='btn_view', value='View Subtitle'>
+                </a>
+              </div>
+                <% } %>
 
-		</ul>
+            </li>
 
-	</div>
+              <% }) %>
+
+          </ul>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
   <script>
   $( document ).ready(function() {
 
@@ -82,8 +103,9 @@ The list can be filtered using the 'search-filters' partial. It includes javascr
 
   });
   </script>
-  <%- include( 'partials/footer' ); %>
 
+  <%- include( 'partials/footer' ); %>
+</div>
 </body>
 
 </html>
