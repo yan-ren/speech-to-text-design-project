@@ -56,9 +56,14 @@ https://catbnb.glitch.me/
 https://cloud.google.com/docs/authentication/production#obtaining_and_providing_service_account_credentials_manually
 https://www.npmjs.com/package/@google-cloud/storage
 API https://cloud.google.com/nodejs/docs/reference/storage/1.5.x/File#getSignedUrl
-https://console.cloud.google.com/storage/browser/speech-to-text-sendbox?project=speech-to-text-sandbox-194702
+https://console.cloud.google.com/storage/browser/speech-to-text-sendbox?project=speech-toG-text-sandbox-194702
 
 10. Google cloud speech
 API https://cloud.google.com/nodejs/docs/reference/speech/1.1.x/v1.SpeechClient#longRunningRecognize
 file encoding https://cloud.google.com/speech/reference/rest/v1/RecognitionConfig#AudioEncoding
 https://cloud.google.com/speech/docs/basics#time-offsets
+https://cloud.google.com/speech/docs/async-time-offsets
+
+11.
+All result from GCS will be concatnated to one string and then saved to db.
+Given the fact that google speech api limits is 180mins. String will not overflow.

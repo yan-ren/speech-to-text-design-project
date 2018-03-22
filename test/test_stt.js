@@ -65,25 +65,6 @@ client
 
       });
     });
-
-    db_Sub.addSub({
-        media_id: req.body.id,
-//               content: JSON.stringify(res, null, 2)
-        content: subContent
-      }, function(err, doc){
-        if(err){  throw err;  }
-
-        // update db file collection
-        // new: bool - if true, return the modified document rather than the original. defaults to false
-        db_Media.updateMedia(req.body.id, {transcribe: true,
-                                  sub: doc._id}, {new: false},
-                                  function(err){
-                                    if(err){  console.log(err); throw err;  }
-                                  }
-                            );
-      }); // addSub
-    // response.send(JSON.stringify(res, null, 2));
-    res.end('success');
   })
   .catch(err => {
     console.error('ERROR:', err);
