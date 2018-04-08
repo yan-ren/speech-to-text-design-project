@@ -64,6 +64,6 @@ Replace with you JSON key file.
 
 ## Test the project
 
-Use .flac mono channel file to test the project.
+Use .flac mono channel file to test the project. Or use the file in /testingAudioFile for simple testing.
 
 [https://cloud.google.com/speech/reference/rest/v1/RecognitionConfig#AudioEncoding]()
