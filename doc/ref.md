@@ -65,5 +65,5 @@ https://cloud.google.com/speech/docs/basics#time-offsets
 https://cloud.google.com/speech/docs/async-time-offsets
 
 11.
-All result from GCS will be concatnated to one string and then saved to db.
+All result from GCS will be concatnated to one string and then savedt to db.
 Given the fact that google speech api limits is 180mins. String will not overflow.
